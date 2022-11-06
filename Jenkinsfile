@@ -10,8 +10,7 @@ pipeline {
     stages {
         stage('mvn build'){
             steps{
-                sh 'cd spring-boot-server'
-                sh 'mvn clean package'
+                sh 'cd spring-boot-server && mvn clean -DSkipTests install package'
             }
         }
         stage('Building Docker image') {
