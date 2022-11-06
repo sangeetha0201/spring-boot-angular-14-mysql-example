@@ -9,6 +9,7 @@ pipeline {
     stages {
         stage('mvn build'){
             steps{
+                sh 'cd spring-boot-server'
                 sh 'mvn clean package'
             }
         }
