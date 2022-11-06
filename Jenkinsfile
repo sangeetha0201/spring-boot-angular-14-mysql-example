@@ -4,6 +4,7 @@ pipeline {
         registryrepo = "/apps/springboot"
         registryCredential = 'azure-container-registry'
         dockerImage = ''
+        dockerfile = 'spring-boot-server/Dockerfile'
       }
     agent { label "slave-1"}
     stages {
@@ -16,7 +17,7 @@ pipeline {
         stage('Building Docker image') {
             steps{
               script {
-                dockerImage = docker.build registry + registryrepo + ":$BUILD_NUMBER"
+                dockerImage = docker.build(registry + registryrepo + ":$BUILD_NUMBER", dockerfile)
               }
             }
         
